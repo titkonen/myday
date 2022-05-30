@@ -26,6 +26,15 @@ struct TabBarView: View {
             })
             .tag(1)
         
+        SettingsView()
+            .tabItem({
+              VStack {
+                Image(systemName: "gearshape.fill")
+                Text("Settings")
+              }
+            })
+            .tag(2)
+        
 //        ChartView()
 //            .tabItem({
 //              VStack {

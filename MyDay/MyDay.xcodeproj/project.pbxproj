@@ -13,6 +13,8 @@
 		0F57D53428449402008BC3DC /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F57D53328449402008BC3DC /* TabBarView.swift */; };
 		0F57D53628449459008BC3DC /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F57D53528449459008BC3DC /* DashboardView.swift */; };
 		0F57D53828449479008BC3DC /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F57D53728449479008BC3DC /* Appearance.swift */; };
+		0F57D53A2844AE96008BC3DC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F57D5392844AE96008BC3DC /* SettingsView.swift */; };
+		0F57D53C2844AF7A008BC3DC /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F57D53B2844AF7A008BC3DC /* LocalNotifications.swift */; };
 		0F9BC9912841EFFF00313479 /* MyDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9BC9902841EFFF00313479 /* MyDayApp.swift */; };
 		0F9BC9932841EFFF00313479 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9BC9922841EFFF00313479 /* ContentView.swift */; };
 		0F9BC9952841F00100313479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F9BC9942841F00100313479 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		0F57D53328449402008BC3DC /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		0F57D53528449459008BC3DC /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		0F57D53728449479008BC3DC /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		0F57D5392844AE96008BC3DC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0F57D53B2844AF7A008BC3DC /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		0F9BC98D2841EFFF00313479 /* MyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9BC9902841EFFF00313479 /* MyDayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayApp.swift; sourceTree = "<group>"; };
 		0F9BC9922841EFFF00313479 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 				0F57D53128448CFF008BC3DC /* TimeFormatting.swift */,
 				0F57D53328449402008BC3DC /* TabBarView.swift */,
 				0F57D53728449479008BC3DC /* Appearance.swift */,
+				0F57D53B2844AF7A008BC3DC /* LocalNotifications.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 				0F2C81A42843CA87000469D7 /* AddView.swift */,
 				0F2C81A62843D000000469D7 /* EditView.swift */,
 				0F57D53528449459008BC3DC /* DashboardView.swift */,
+				0F57D5392844AE96008BC3DC /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F57D53C2844AF7A008BC3DC /* LocalNotifications.swift in Sources */,
 				0F9BC9932841EFFF00313479 /* ContentView.swift in Sources */,
 				0F57D53228448CFF008BC3DC /* TimeFormatting.swift in Sources */,
 				0F57D53428449402008BC3DC /* TabBarView.swift in Sources */,
@@ -195,6 +202,7 @@
 				0F2C81A52843CA87000469D7 /* AddView.swift in Sources */,
 				0F9BC9A22841F05F00313479 /* MyDayModel.xcdatamodeld in Sources */,
 				0F9BC9912841EFFF00313479 /* MyDayApp.swift in Sources */,
+				0F57D53A2844AE96008BC3DC /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
