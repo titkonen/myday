@@ -6,7 +6,10 @@ struct AddView: View {
   
   @State private var title = ""
   @State private var breadtext = ""
-  @State private var mood: Double = 0
+  @State private var mood: Double = 50
+  
+  @State private var speed = 50.0
+  @State private var isEditing = false
   
     var body: some View {
       Form {
@@ -15,8 +18,25 @@ struct AddView: View {
           TextField("Breadtext", text: $breadtext)
           
           VStack {
-            Text("Mood \(Int(mood))")
-            Slider(value: $mood, in: 0...90, step: 10)
+            Text("My Mood today is: \(Int(mood))")
+//            Slider(value: $mood, in: 0...90, step: 10)
+            
+            Slider(
+              value: $mood,
+              in: 0...90,
+              step: 10
+            ) {
+              Text("Speed")
+            } minimumValueLabel: {
+              Text("Sad")
+//              Image(systemName: "pencil.circle")
+            } maximumValueLabel: {
+              Text("Happy")
+            } onEditingChanged: { editing in
+              isEditing = editing
+            }
+//            Text("\(speed)")
+//              .foregroundColor(isEditing ? .red : .blue)
           }
           .padding()
           
