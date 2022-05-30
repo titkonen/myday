@@ -5,7 +5,7 @@ struct AddView: View {
   @Environment(\.dismiss) var dismiss
   
   @State private var title = ""
-  @State private var breadtext = "My thoughts"
+  @State private var breadtext = "Add thoughts"
   @State private var mood: Double = 50
   @State private var image: UIImage?
   @State private var shouldShowImagePicker = false

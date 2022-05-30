@@ -35,7 +35,17 @@ class DataController: ObservableObject {
     save(context: context)
   }
   
-  func edit(day: MyDayEntity, title: String, breadtext: String, mood: Double, context: NSManagedObjectContext, image: UIImage?) {
+  func edit(day: MyDayEntity, title: String, breadtext: String, mood: Double, context: NSManagedObjectContext) {
+    day.date = Date()
+    day.title = title
+    day.breadtext = breadtext
+    day.mood = mood
+//    day.image = image?.pngData()
+    
+    save(context: context)
+  }
+  
+  func editPhoto(day: MyDayEntity, title: String, breadtext: String, mood: Double, context: NSManagedObjectContext, image: UIImage?) {
     day.date = Date()
     day.title = title
     day.breadtext = breadtext

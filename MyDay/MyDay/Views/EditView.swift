@@ -10,13 +10,11 @@ struct EditView: View {
   @State private var breadtext = ""
   @State private var mood: Double = 0
   
-  // MARK: Testing
-//  let image: UIImage?
+  // MARK: Image properties
   @State private var image: UIImage?
-//  @State var image:UIImage = UIImage()
+  @State private var shouldShowImagePicker = false
   
   var body: some View {
-    
     Form {
       Section {
         TextField("\(day.title!)", text: $title)
@@ -25,63 +23,77 @@ struct EditView: View {
             breadtext = day.breadtext!
             mood = day.mood
           }
-//        TextField("\(day.breadtext!)", text: $breadtext)
         TextEditor(text: $breadtext)
           .foregroundColor(.primary)
           .padding()
           .navigationTitle("My thoughts")
           .frame(height: 120)
-        
         VStack {
           Text("Mood: \(Int(mood))")
           Slider(value: $mood, in: 0...90, step: 10)
-        
-//          image.map {
-//            Image(uiImage: $0)
-//              .renderingMode(.original)
-//              .resizable()
-//              .aspectRatio(contentMode: .fit)
-//              .cornerRadius(8)
-//              .shadow(radius: 10)
-//          }
-          
-//          Image(uiImage: day.image?)
-//          Image(uiImage: image)
-          
-
-          
-        
-        }
-        VStack {
-          Image(systemName: "plus")
-//          image.map {
-//            Image(uiImage: $0)
-//          }
-//          Image(uiImage: image)
-//          Image(uiImage: image ?? UIImage())
-          Image(uiImage: day.image?.uiImage ?? UIImage())
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-//            .frame(width:100, height:200)
-            .background(.gray)
-          Image(systemName: "minus")
         }
         .padding()
-        
-        
-        
         HStack {
           Spacer()
           Button("Update") {
-            DataController().edit(day: day, title: title, breadtext: breadtext, mood: mood, context: managedObjContext, image: image)
+            DataController().edit(day: day, title: title, breadtext: breadtext, mood: mood, context: managedObjContext) /// image: image
             dismiss()
           }
           Spacer()
         }
-      }
+      } ///_Section
+        
+      Section {
+        VStack {
+          Image(uiImage: day.image?.uiImage ?? UIImage())
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .background(.gray)
+        }
+          Button(
+            action: {
+              shouldShowImagePicker.toggle()
+
+            },
+            label: updatePhotoButton
+          )
+          Button("Save Photo") {
+//            DataController().edit(day: day, title: title, breadtext: breadtext, mood: mood, context: managedObjContext) /// image: image
+            DataController().editPhoto(day: day, title: title, breadtext: breadtext, mood: mood, context: managedObjContext, image: image)
+            dismiss()
+          }
+        
+      }///_Section
+        
+
       
     }///_Form
+    .sheet(isPresented: $shouldShowImagePicker) {
+      ImagePicker(image: $image)
+    }
   }///_Body
+  
+  @ViewBuilder
+  private func updatePhotoButton() -> some View {
+    image.map {
+      Image(uiImage: $0)
+        .renderingMode(.original)
+        .resizable()
+        .aspectRatio(contentMode: .fill)
+    }
+
+    if image == nil {
+      HStack {
+        Spacer()
+        Image(systemName: "photo.on.rectangle")
+        Text("Update Photo")
+        Spacer()
+      }
+      .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+    }
+  }
+  
+  
 }///_Struct
 
 //struct EditView_Previews: PreviewProvider {
