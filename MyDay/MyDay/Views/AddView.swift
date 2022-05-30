@@ -5,7 +5,7 @@ struct AddView: View {
   @Environment(\.dismiss) var dismiss
   
   @State private var title = ""
-  @State private var breadtext = ""
+  @State private var breadtext = "My thoughts"
   @State private var mood: Double = 50
   
   @State private var speed = 50.0
@@ -15,7 +15,19 @@ struct AddView: View {
       Form {
         Section {
           TextField("Title", text: $title)
-          TextField("Breadtext", text: $breadtext)
+//          TextField("Breadtext", text: $breadtext)
+          TextEditor(text: $breadtext)
+            .foregroundColor(.primary)
+//            .foregroundColor(isEditing ? .red : .blue)
+            .padding()
+            .navigationTitle("My thoughts")
+            .frame(height: 120)
+          
+//        onEditingChanged: { editing in
+//          isEditing = editing
+//        }
+          
+          
           
           VStack {
             Text("My Mood today is: \(Int(mood))")

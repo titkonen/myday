@@ -19,7 +19,12 @@ struct EditView: View {
             breadtext = day.breadtext!
             mood = day.mood
           }
-        TextField("\(day.breadtext!)", text: $breadtext)
+//        TextField("\(day.breadtext!)", text: $breadtext)
+        TextEditor(text: $breadtext)
+          .foregroundColor(.primary)
+          .padding()
+          .navigationTitle("My thoughts")
+          .frame(height: 120)
         
         VStack {
           Text("Mood: \(Int(mood))")
