@@ -7,7 +7,10 @@ struct AddView: View {
   @State private var title = ""
   @State private var breadtext = "My thoughts"
   @State private var mood: Double = 50
+  @State private var image: UIImage?
+  @State private var shouldShowImagePicker = false
   
+  //MARK: For testing
   @State private var speed = 50.0
   @State private var isEditing = false
   
@@ -26,9 +29,6 @@ struct AddView: View {
 //        onEditingChanged: { editing in
 //          isEditing = editing
 //        }
-          
-          
-          
           VStack {
             Text("My Mood today is: \(Int(mood))")
 //            Slider(value: $mood, in: 0...90, step: 10)
@@ -55,16 +55,51 @@ struct AddView: View {
           HStack {
             Spacer()
             Button("Save") {
-              DataController().add(title: title, breadtext: breadtext, mood: mood, context: managedObjContext)
+              guard let image = image else { return }
+              DataController().add(title: title, breadtext: breadtext, mood: mood, context: managedObjContext, image: image)
               dismiss()
             }
             Spacer()
           }
           
+        }///_Section
+        Section {
+          Button(
+            action: {
+              shouldShowImagePicker.toggle()
+            },
+            label: makeImageForChoosePhotosButton
+          )
         }
-      } ///-form
+        
+      } ///_Form
+      .sheet(isPresented: $shouldShowImagePicker) {
+        ImagePicker(image: $image)
+      }
+      
+    } ///_Body
+  
+  @ViewBuilder
+  private func makeImageForChoosePhotosButton() -> some View {
+    image.map {
+      Image(uiImage: $0)
+        .renderingMode(.original)
+        .resizable()
+        .aspectRatio(contentMode: .fill)
     }
-}
+
+    if image == nil {
+      HStack {
+        Spacer()
+        Image(systemName: "photo.on.rectangle")
+        Text("Choose Photo")
+        Spacer()
+      }
+      .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+    }
+  }
+  
+}///_Struct
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {

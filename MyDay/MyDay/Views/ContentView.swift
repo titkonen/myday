@@ -4,14 +4,17 @@ import CoreData
 struct ContentView: View {
   @Environment(\.managedObjectContext) var managedObjContext
   @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var day: FetchedResults<MyDayEntity>
-  
   @State private var showingAddView = false
+  
+  // MARK: Testing
+//  let image: UIImage?
+//  @State private var image = UIImage?
   
     var body: some View {
       NavigationView {
         List {
           ForEach(day) { day in
-            NavigationLink(destination: EditView(day: day)) {
+            NavigationLink(destination: EditView(day: day)) { /// , image: day.image?.uiImage
               HStack {
                 VStack(alignment: .leading, spacing: 6) {
                   Text(day.title!)
@@ -63,8 +66,8 @@ struct ContentView: View {
   
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//      ContentView(day.image?.uiImage)
+//    }
+//}

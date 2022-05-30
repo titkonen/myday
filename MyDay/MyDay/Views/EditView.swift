@@ -10,7 +10,13 @@ struct EditView: View {
   @State private var breadtext = ""
   @State private var mood: Double = 0
   
+  // MARK: Testing
+//  let image: UIImage?
+  @State private var image: UIImage?
+//  @State var image:UIImage = UIImage()
+  
   var body: some View {
+    
     Form {
       Section {
         TextField("\(day.title!)", text: $title)
@@ -29,13 +35,45 @@ struct EditView: View {
         VStack {
           Text("Mood: \(Int(mood))")
           Slider(value: $mood, in: 0...90, step: 10)
+        
+//          image.map {
+//            Image(uiImage: $0)
+//              .renderingMode(.original)
+//              .resizable()
+//              .aspectRatio(contentMode: .fit)
+//              .cornerRadius(8)
+//              .shadow(radius: 10)
+//          }
+          
+//          Image(uiImage: day.image?)
+//          Image(uiImage: image)
+          
+
+          
+        
+        }
+        VStack {
+          Image(systemName: "plus")
+//          image.map {
+//            Image(uiImage: $0)
+//          }
+//          Image(uiImage: image)
+//          Image(uiImage: image ?? UIImage())
+          Image(uiImage: day.image?.uiImage ?? UIImage())
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+//            .frame(width:100, height:200)
+            .background(.gray)
+          Image(systemName: "minus")
         }
         .padding()
+        
+        
         
         HStack {
           Spacer()
           Button("Update") {
-            DataController().edit(day: day, title: title, breadtext: breadtext, mood: mood, context: managedObjContext)
+            DataController().edit(day: day, title: title, breadtext: breadtext, mood: mood, context: managedObjContext, image: image)
             dismiss()
           }
           Spacer()
