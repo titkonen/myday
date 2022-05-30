@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F2C81A52843CA87000469D7 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2C81A42843CA87000469D7 /* AddView.swift */; };
 		0F2C81A72843D000000469D7 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2C81A62843D000000469D7 /* EditView.swift */; };
+		0F57D53228448CFF008BC3DC /* TimeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F57D53128448CFF008BC3DC /* TimeFormatting.swift */; };
 		0F9BC9912841EFFF00313479 /* MyDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9BC9902841EFFF00313479 /* MyDayApp.swift */; };
 		0F9BC9932841EFFF00313479 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9BC9922841EFFF00313479 /* ContentView.swift */; };
 		0F9BC9952841F00100313479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F9BC9942841F00100313479 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		0F2C81A42843CA87000469D7 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		0F2C81A62843D000000469D7 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		0F57D53128448CFF008BC3DC /* TimeFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatting.swift; sourceTree = "<group>"; };
 		0F9BC98D2841EFFF00313479 /* MyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9BC9902841EFFF00313479 /* MyDayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayApp.swift; sourceTree = "<group>"; };
 		0F9BC9922841EFFF00313479 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +42,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F57D53028448CED008BC3DC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0F57D53128448CFF008BC3DC /* TimeFormatting.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		0F9BC9842841EFFF00313479 = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +69,7 @@
 		0F9BC98F2841EFFF00313479 /* MyDay */ = {
 			isa = PBXGroup;
 			children = (
+				0F57D53028448CED008BC3DC /* Helpers */,
 				0F9BC9902841EFFF00313479 /* MyDayApp.swift */,
 				0F9BC99F2841F02E00313479 /* Model */,
 				0F9BC99E2841F02800313479 /* Views */,
@@ -166,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F9BC9932841EFFF00313479 /* ContentView.swift in Sources */,
+				0F57D53228448CFF008BC3DC /* TimeFormatting.swift in Sources */,
 				0F9BC9A42841F1F000313479 /* DataController.swift in Sources */,
 				0F2C81A72843D000000469D7 /* EditView.swift in Sources */,
 				0F2C81A52843CA87000469D7 /* AddView.swift in Sources */,

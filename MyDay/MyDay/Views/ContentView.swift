@@ -19,10 +19,16 @@ struct ContentView: View {
                   
                   Text("\(Int(day.mood))") + Text(" Mood points")
                     .foregroundColor(.gray)
+                    .font(.callout)
                 }
-              }
+                Spacer()
+                Text(calcTimeSince(date:day.date!))
+                  .foregroundColor(.gray)
+                  .font(.callout)
+                
+              }///_Hstack
             }
-          }///-ForEach
+          }///_ForEach
           .onDelete(perform: deleteDay)
         }///-List
         .listStyle(.plain)
