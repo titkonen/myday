@@ -18,17 +18,12 @@ struct AddView: View {
       Form {
         Section {
           TextField("Title", text: $title)
-//          TextField("Breadtext", text: $breadtext)
           TextEditor(text: $breadtext)
-            .foregroundColor(.primary)
-//            .foregroundColor(isEditing ? .red : .blue)
+            .foregroundColor(.secondary)
             .padding()
             .navigationTitle("My thoughts")
             .frame(height: 120)
           
-//        onEditingChanged: { editing in
-//          isEditing = editing
-//        }
           VStack {
             Text("My Mood today is: \(Int(mood))")
             Slider(value: $mood,in: 0...90, step: 10) {
