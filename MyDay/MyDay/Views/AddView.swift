@@ -46,16 +46,6 @@ struct AddView: View {
           }
           .padding()
           
-          HStack {
-            Spacer()
-            Button("Save") {
-              guard let image = image else { return }
-              DataController().add(title: title, breadtext: breadtext, mood: mood, context: managedObjContext, image: image)
-              dismiss()
-            }
-            Spacer()
-          }
-          
         }///_Section
         Section {
           Button(
@@ -65,6 +55,16 @@ struct AddView: View {
             label: makeImageForChoosePhotosButton
           )
         }
+        
+        HStack {
+          Spacer()
+          Button("Save") {
+            guard let image = image else { return }
+            DataController().add(title: title, breadtext: breadtext, mood: mood, context: managedObjContext, image: image)
+            dismiss()
+          }
+          Spacer()
+        }///_HStack
         
       } ///_Form
       .sheet(isPresented: $shouldShowImagePicker) {
