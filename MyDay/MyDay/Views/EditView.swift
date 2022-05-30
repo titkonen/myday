@@ -19,6 +19,8 @@ struct EditView: View {
             breadtext = day.breadtext!
             mood = day.mood
           }
+        TextField("\(day.breadtext!)", text: $breadtext)
+        
         VStack {
           Text("Mood: \(Int(mood))")
           Slider(value: $mood, in: 0...90, step: 10)
