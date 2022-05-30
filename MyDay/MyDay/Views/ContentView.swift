@@ -7,8 +7,22 @@ struct ContentView: View {
   @State private var showingAddView = false
   
   // MARK: Testing
-//  let image: UIImage?
-//  @State private var image = UIImage?
+  @State private var searchTerm = "" // Search
+  
+  var searchQuery: Binding<String> {
+    Binding {
+      searchTerm
+    } set: { newValue in
+      searchTerm = newValue
+      guard !newValue.isEmpty else {
+        day.nsPredicate = nil
+        return
+      }
+      day.nsPredicate = NSPredicate(
+        format: "name contains[cd] %@",
+        newValue)
+    }
+  }
   
     var body: some View {
       NavigationView {
@@ -34,6 +48,7 @@ struct ContentView: View {
           }///_ForEach
           .onDelete(perform: deleteDay)
         }///-List
+        .searchable(text: searchQuery)
         .listStyle(.plain)
         .navigationTitle("Day List")
         .toolbar {
