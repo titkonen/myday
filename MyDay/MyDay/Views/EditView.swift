@@ -29,8 +29,15 @@ struct EditView: View {
           .navigationTitle("My thoughts")
           .frame(height: 120)
         VStack {
-          Text("Mood: \(Int(mood))")
-          Slider(value: $mood, in: 0...90, step: 10)
+          Text("My Mood today is: \(Int(mood))")
+          Slider(value: $mood,in: 0...90, step: 10) {
+            Text("Speed")
+          } minimumValueLabel: {
+            Text("Sad")
+          } maximumValueLabel: {
+            Text("Happy")
+          }
+          
         }
         .padding()
         HStack {
@@ -45,23 +52,29 @@ struct EditView: View {
         
       Section {
         VStack {
+          Spacer()
           Image(uiImage: day.image?.uiImage ?? UIImage())
             .resizable()
             .aspectRatio(contentMode: .fit)
             .background(.gray)
-        }
+            .cornerRadius(8)
+//            .shadow(radius: 10)
+          Spacer()
+        }///_VStack
           Button(
             action: {
               shouldShowImagePicker.toggle()
-
             },
             label: updatePhotoButton
           )
+        HStack {
+          Spacer()
           Button("Save Photo") {
-//            DataController().edit(day: day, title: title, breadtext: breadtext, mood: mood, context: managedObjContext) /// image: image
             DataController().editPhoto(day: day, title: title, breadtext: breadtext, mood: mood, context: managedObjContext, image: image)
             dismiss()
           }
+          Spacer()
+        }
         
       }///_Section
         

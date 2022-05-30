@@ -31,13 +31,7 @@ struct AddView: View {
 //        }
           VStack {
             Text("My Mood today is: \(Int(mood))")
-//            Slider(value: $mood, in: 0...90, step: 10)
-            
-            Slider(
-              value: $mood,
-              in: 0...90,
-              step: 10
-            ) {
+            Slider(value: $mood,in: 0...90, step: 10) {
               Text("Speed")
             } minimumValueLabel: {
               Text("Sad")
