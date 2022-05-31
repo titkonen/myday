@@ -22,21 +22,21 @@ struct Sorting: Hashable, Identifiable {
       descriptors: [
         SortDescriptor(\MyDayEntity.date, order: .reverse),
         SortDescriptor(\MyDayEntity.title, order: .forward)
+      ]),
+    Sorting(
+      id: 2,
+      title: "Mood | Ascending",
+      descriptors: [
+        SortDescriptor(\MyDayEntity.mood, order: .forward),
+        SortDescriptor(\MyDayEntity.title, order: .forward)
+      ]),
+    Sorting(
+      id: 3,
+      title: "Mood | Descending",
+      descriptors: [
+        SortDescriptor(\MyDayEntity.mood, order: .reverse),
+        SortDescriptor(\MyDayEntity.title, order: .forward)
       ])
-//    Sorting(
-//      id: 2,
-//      name: "Meeting Date | Ascending",
-//      descriptors: [
-//        SortDescriptor(\Friend.meetingDate, order: .forward),
-//        SortDescriptor(\Friend.name, order: .forward)
-//      ]),
-//    Sorting(
-//      id: 3,
-//      name: "Meeting Date | Descending",
-//      descriptors: [
-//        SortDescriptor(\Friend.meetingDate, order: .reverse),
-//        SortDescriptor(\Friend.name, order: .forward)
-//      ])
   ]
 
   // 4
