@@ -6,11 +6,28 @@ struct ContentView: View {
 //  @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var day: FetchedResults<MyDayEntity>
   @FetchRequest(sortDescriptors: Sorting.default.descriptors) var day: FetchedResults<MyDayEntity>
   @State private var showingAddView = false
-  
   @State private var selectedSort = Sorting.default
 
   // MARK: Search function
-  @State private var searchText = ""
+  @State private var searchTerm = ""
+  
+  var searchQuery: Binding<String> {
+    Binding {
+      searchTerm
+    } set: { newValue in
+      searchTerm = newValue
+      
+      guard !newValue.isEmpty else {
+        day.nsPredicate = nil
+        return
+      }
+
+      day.nsPredicate = NSPredicate(
+        format: "title contains[cd] %@", //
+        newValue)
+    }
+  }
+
   
     var body: some View {
       NavigationView {
@@ -37,8 +54,7 @@ struct ContentView: View {
           }///_ForEach
           .onDelete(perform: deleteDay)
         }///-List
-//        .searchable(text: searchQuery)
-        .searchable(text: $searchText, prompt: "Look for something")
+        .searchable(text: searchQuery)
         .listStyle(.plain)
         .navigationTitle("Day List")
         .toolbar {
