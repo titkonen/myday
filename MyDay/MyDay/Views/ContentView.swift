@@ -3,29 +3,18 @@ import CoreData
 
 struct ContentView: View {
   @Environment(\.managedObjectContext) var managedObjContext
-  @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var day: FetchedResults<MyDayEntity>
+//  @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var day: FetchedResults<MyDayEntity>
+  @FetchRequest(sortDescriptors: Sorting.default.descriptors) var day: FetchedResults<MyDayEntity>
   @State private var showingAddView = false
   
-  // MARK: Testing
-  @State private var searchTerm = "" // Search
-  
-  var searchQuery: Binding<String> {
-    Binding {
-      searchTerm
-    } set: { newValue in
-      searchTerm = newValue
-      guard !newValue.isEmpty else {
-        day.nsPredicate = nil
-        return
-      }
-      day.nsPredicate = NSPredicate(
-        format: "name contains[cd] %@",
-        newValue)
-    }
-  }
+  @State private var selectedSort = Sorting.default
+
+  // MARK: Search function
+  @State private var searchText = ""
   
     var body: some View {
       NavigationView {
+        
         List {
           ForEach(day) { day in
             NavigationLink(destination: EditView(day: day)) { /// , image: day.image?.uiImage
@@ -48,29 +37,58 @@ struct ContentView: View {
           }///_ForEach
           .onDelete(perform: deleteDay)
         }///-List
-        .searchable(text: searchQuery)
+//        .searchable(text: searchQuery)
+        .searchable(text: $searchText, prompt: "Look for something")
         .listStyle(.plain)
         .navigationTitle("Day List")
         .toolbar {
-          ToolbarItem(placement: .navigationBarTrailing) {
+  
+          ToolbarItemGroup(placement: .navigationBarTrailing) {
+            
+            SortSelectionView(
+                selectedSortItem: $selectedSort,
+                sorts: Sorting.sorts)
+              .onChange(of: selectedSort) { _ in
+                day.sortDescriptors = selectedSort.descriptors
+              }
+            
             Button {
               showingAddView.toggle()
             } label: {
               Label("Add Day", systemImage: "plus.circle")
             }
           }
+          
+          
+//          ToolbarItem(placement: .navigationBarTrailing) {
+//            Button {
+//              showingAddView.toggle()
+//            } label: {
+//              Label("Add Day", systemImage: "plus.circle")
+//            }
+//          }
+          
+          
           ToolbarItem(placement: .navigationBarLeading) {
             EditButton()
           }
-        }
+          
+          
+        } ///_Toolbar
         .sheet(isPresented: $showingAddView) {
           AddView()
         }
       }///-NavigationView
       .navigationViewStyle(.stack)
-      
-      
-    }///-Body
+    } ///_Body
+  
+//  var searchResults: [String] {
+//      if searchText.isEmpty {
+//        return day
+//      } else {
+//          return names.filter { $0.contains(searchText) }
+//      }
+//  }
   
   private func deleteDay(offsets: IndexSet) {
     withAnimation {
