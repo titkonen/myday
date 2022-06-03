@@ -55,8 +55,7 @@ struct DashboardView: View {
      return .clear
   }
   
-  
-}
+} ///_Struct
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {

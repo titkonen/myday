@@ -8,8 +8,6 @@ struct ContentView: View {
   @State private var showingAddView = false
   @State private var selectedSort = Sorting.default
   @State private var image: UIImage?
-  
-  // MARK: Search function
   @State private var searchTerm = ""
   
   var searchQuery: Binding<String> {
@@ -35,12 +33,10 @@ struct ContentView: View {
               HStack {
                 Image(uiImage: day.image?.uiImage ?? UIImage())
                   .resizable()
-//                  .aspectRatio(contentMode: .fit)
                   .aspectRatio(contentMode: .fill)
                   .background(.gray)
                   .frame(width: 54, height: 54)
                   .cornerRadius(6)
-                
                 VStack(alignment: .leading, spacing: 6) {
                   Text(day.title!)
                     .bold()
@@ -49,13 +45,9 @@ struct ContentView: View {
                     .font(.subheadline)
                 }
                 Spacer()
-//                Text(calcTimeSince(date:day.date!))
-//                Text("\(hero.date!.formatted(date: .abbreviated, time: .omitted))")
-                
                 Text(" \(day.date!.formatted(date: .abbreviated, time: .omitted))")
                   .foregroundColor(.gray)
                   .font(.footnote)
-                
               } ///_Hstack
             } ///_NavLink
           } ///_ForEach
@@ -63,40 +55,24 @@ struct ContentView: View {
         }///-List
         .searchable(text: searchQuery)
         .listStyle(.plain)
-        .navigationTitle("Day List")
+        .navigationTitle("My Days")
         .toolbar {
-  
           ToolbarItemGroup(placement: .navigationBarTrailing) {
-            
             SortSelectionView(
                 selectedSortItem: $selectedSort,
                 sorts: Sorting.sorts)
               .onChange(of: selectedSort) { _ in
                 day.sortDescriptors = selectedSort.descriptors
               }
-            
             Button {
               showingAddView.toggle()
             } label: {
               Label("Add Day", systemImage: "plus.circle")
             }
-          }
-          
-          
-//          ToolbarItem(placement: .navigationBarTrailing) {
-//            Button {
-//              showingAddView.toggle()
-//            } label: {
-//              Label("Add Day", systemImage: "plus.circle")
-//            }
-//          }
-          
-          
+          } ///_ToolbarItemGroup
           ToolbarItem(placement: .navigationBarLeading) {
             EditButton()
           }
-          
-          
         } ///_Toolbar
         .sheet(isPresented: $showingAddView) {
           AddView()
@@ -104,15 +80,7 @@ struct ContentView: View {
       }///-NavigationView
       .navigationViewStyle(.stack)
     } ///_Body
-  
-//  var searchResults: [String] {
-//      if searchText.isEmpty {
-//        return day
-//      } else {
-//          return names.filter { $0.contains(searchText) }
-//      }
-//  }
-  
+    
   private func deleteDay(offsets: IndexSet) {
     withAnimation {
       offsets.map { day[$0] }.forEach(managedObjContext.delete)
@@ -120,7 +88,7 @@ struct ContentView: View {
     }
   }
   
-}
+} ///_Struct
 
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {

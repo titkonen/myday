@@ -19,19 +19,15 @@ struct SortSelectionView: View {
           systemImage: "line.horizontal.3.decrease.circle")
       }
       .pickerStyle(.inline)
-
-      
     }
 }
 
 struct SortSelectionView_Previews: PreviewProvider {
-  
   @State static var sort = Sorting.default
-
+  
     static var previews: some View {
       SortSelectionView(
         selectedSortItem: $sort,
         sorts: Sorting.sorts)
-
     }
 }

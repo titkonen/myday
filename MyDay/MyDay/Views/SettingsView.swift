@@ -58,7 +58,7 @@ struct SettingsView: View {
     }
   }
   
-}//_Struct
+} ///_Struct
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {

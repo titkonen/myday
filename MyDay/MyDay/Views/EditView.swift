@@ -77,9 +77,6 @@ struct EditView: View {
         }
         
       }///_Section
-        
-
-      
     }///_Form
     .sheet(isPresented: $shouldShowImagePicker) {
       ImagePicker(image: $image)

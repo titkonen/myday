@@ -29,7 +29,6 @@ class DataController: ObservableObject {
     day.title = title
     day.breadtext = breadtext
     day.mood = mood
-//    day.image = image?.pngData()
     day.image = image?.jpegData(compressionQuality: 0.7)
     
     
@@ -50,7 +49,6 @@ class DataController: ObservableObject {
     day.title = title
     day.breadtext = breadtext
     day.mood = mood
-//    day.image = image?.pngData()
     day.image = image?.jpegData(compressionQuality: 0.7)
     
     save(context: context)

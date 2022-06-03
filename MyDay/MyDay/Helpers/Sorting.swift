@@ -39,8 +39,6 @@ struct Sorting: Hashable, Identifiable {
       ])
   ]
 
-  // 4
-  static var `default`: Sorting { sorts[0] }
-  
+  static var `default`: Sorting { sorts[1] }
   
 }
