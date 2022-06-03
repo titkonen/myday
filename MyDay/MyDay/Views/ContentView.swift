@@ -7,7 +7,8 @@ struct ContentView: View {
   @FetchRequest(sortDescriptors: Sorting.default.descriptors) var day: FetchedResults<MyDayEntity>
   @State private var showingAddView = false
   @State private var selectedSort = Sorting.default
-
+  @State private var image: UIImage?
+  
   // MARK: Search function
   @State private var searchTerm = ""
   
@@ -16,42 +17,48 @@ struct ContentView: View {
       searchTerm
     } set: { newValue in
       searchTerm = newValue
-      
       guard !newValue.isEmpty else {
         day.nsPredicate = nil
         return
       }
-
       day.nsPredicate = NSPredicate(
         format: "title contains[cd] %@", //
         newValue)
     }
   }
 
-  
     var body: some View {
       NavigationView {
-        
         List {
           ForEach(day) { day in
             NavigationLink(destination: EditView(day: day)) { /// , image: day.image?.uiImage
               HStack {
+                Image(uiImage: day.image?.uiImage ?? UIImage())
+                  .resizable()
+//                  .aspectRatio(contentMode: .fit)
+                  .aspectRatio(contentMode: .fill)
+                  .background(.gray)
+                  .frame(width: 54, height: 54)
+                  .cornerRadius(6)
+                
                 VStack(alignment: .leading, spacing: 6) {
                   Text(day.title!)
                     .bold()
-                  
-                  Text("\(Int(day.mood))") + Text(" Mood points")
+                  Text("\(Int(day.mood))").foregroundColor(.orange) + Text(" Mood points")
                     .foregroundColor(.gray)
-                    .font(.callout)
+                    .font(.subheadline)
                 }
                 Spacer()
-                Text(calcTimeSince(date:day.date!))
-                  .foregroundColor(.gray)
-                  .font(.callout)
+//                Text(calcTimeSince(date:day.date!))
+//                Text("\(hero.date!.formatted(date: .abbreviated, time: .omitted))")
                 
-              }///_Hstack
-            }
-          }///_ForEach
+                Text(" \(day.date!.formatted(date: .abbreviated, time: .omitted))")
+                  .foregroundColor(.gray)
+                  .font(.footnote)
+                
+              } ///_Hstack
+            } ///_NavLink
+          } ///_ForEach
           .onDelete(perform: deleteDay)
         }///-List
         .searchable(text: searchQuery)
