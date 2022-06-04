@@ -24,6 +24,26 @@ struct ContentView: View {
         newValue)
     }
   }
+  
+  init() {
+         //Use this if NavigationBarTitle is with Large Font
+         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.systemPurple]
+
+         //Use this if NavigationBarTitle is with displayMode = .inline
+         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.systemPurple]
+  
+    let coloredAppearance = UINavigationBarAppearance()
+    coloredAppearance.configureWithOpaqueBackground()
+    coloredAppearance.backgroundColor = UIColor(red: 254/255, green: 241/255, blue: 214/255, alpha: 1)
+    coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor(red: 222/255, green: 150/255, blue: 167/255, alpha: 1)] /// UIColor(red: 220, green: 24, blue: 311, alpha: 1)
+    coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(red: 222/255, green: 150/255, blue: 167/255, alpha: 1)]
+    
+    UINavigationBar.appearance().standardAppearance = coloredAppearance
+    UINavigationBar.appearance().compactAppearance = coloredAppearance
+    UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+    
+    UINavigationBar.appearance().tintColor = UIColor(red: 43/255, green: 101/255, blue: 134/255, alpha: 1) //NavBar link colors
+  }
 
     var body: some View {
       NavigationView {
@@ -40,7 +60,7 @@ struct ContentView: View {
                 VStack(alignment: .leading, spacing: 6) {
                   Text(day.title!)
                     .bold()
-                  Text("\(Int(day.mood))").foregroundColor(.orange) + Text(" Mood points")
+                  Text("\(Int(day.mood))").foregroundColor(Color("secondary-color")) + Text(" Mood points")
                     .foregroundColor(.gray)
                     .font(.subheadline)
                 }
@@ -56,6 +76,7 @@ struct ContentView: View {
         .searchable(text: searchQuery)
         .listStyle(.plain)
         .navigationTitle("My Days")
+//        .foregroundColor(Color("secondary-color"))
         .toolbar {
           ToolbarItemGroup(placement: .navigationBarTrailing) {
             SortSelectionView(
@@ -79,6 +100,8 @@ struct ContentView: View {
         }
       }///-NavigationView
       .navigationViewStyle(.stack)
+
+      
     } ///_Body
     
   private func deleteDay(offsets: IndexSet) {

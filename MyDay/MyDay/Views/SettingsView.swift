@@ -45,7 +45,7 @@ struct SettingsView: View {
             } /// _Hstack
             NavigationLink(destination: PrivacyPolicyView()) {
               Text("Privacy Policy")
-                .foregroundColor(.orange)
+                .foregroundColor(Color("secondary-color"))
             }
             
           }

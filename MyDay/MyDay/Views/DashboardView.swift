@@ -12,7 +12,7 @@ struct DashboardView: View {
       NavigationView {
         List {
             ForEach(day) { day in
-              VStack(alignment: .leading) {
+              VStack(alignment: .leading) { /// .padding(.bottom)
                 HStack(alignment: .top) {
                   Text(day.title ?? "Unknown name")
                     .onAppear {

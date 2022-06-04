@@ -33,7 +33,7 @@ struct TabBarView: View {
             })
             .tag(2)
       }
-      .accentColor(Color("primary-orange"))
+      .accentColor(Color("primary-color"))
     }
 }
 
