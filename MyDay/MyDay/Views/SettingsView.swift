@@ -17,7 +17,7 @@ struct SettingsView: View {
               .pickerStyle(SegmentedPickerStyle())
             }
           }
-          Section(header: Text("Notifications")) {
+          Section(header: Text("Notifications and privacy policy")) {
             HStack {
               if #available(iOS 14.0, *) {
                 Toggle("Daily Reminder", isOn: $dailyReminderEnabled)
@@ -42,7 +42,12 @@ struct SettingsView: View {
               } else {
                 // Fallback on earlier versions
               }
+            } /// _Hstack
+            NavigationLink(destination: PrivacyPolicyView()) {
+              Text("Privacy Policy")
+                .foregroundColor(.orange)
             }
+            
           }
         }
         .navigationTitle("Settings")
