@@ -25,12 +25,11 @@ struct EditView: View {
               breadtext = day.breadtext!
               mood = day.mood
             }
-          TextField("Notes", text: $breadtext)
-  //        TextEditor(text: $breadtext)
-  //          .foregroundColor(.primary)
-  //          .padding()
-  //          .navigationTitle("My thoughts")
-  //          .frame(height: 120)
+//          TextField("Notes", text: $breadtext)
+          TextEditor(text: $breadtext)
+            .foregroundColor(.primary)
+//            .padding()
+            .frame(height: 120)
           VStack {
             Text("My Mood today is: \(Int(mood))")
             Slider(value: $mood,in: 0...90, step: 10) {

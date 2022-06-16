@@ -5,7 +5,7 @@ struct AddView: View {
   @Environment(\.dismiss) var dismiss
   
   @State private var title = ""
-  @State private var breadtext = ""
+  @State private var breadtext = "Notes"
   @State private var mood: Double = 50
   @State private var image: UIImage?
   @State private var shouldShowImagePicker = false
@@ -18,12 +18,12 @@ struct AddView: View {
       Form {
         Section {
           TextField("Title", text: $title)
-          TextField("Notes", text: $breadtext)
-//          TextEditor(text: $breadtext)
-//            .foregroundColor(.secondary)
+//          TextField("Notes", text: $breadtext)
+          TextEditor(text: $breadtext)
+            .foregroundColor(.secondary)
 //            .padding()
-//            .navigationTitle("My thoughts")
-//            .frame(height: 120)
+            .navigationTitle("My thoughts")
+            .frame(height: 120)
           VStack {
             Text("My Mood today is: \(Int(mood))")
             Slider(value: $mood,in: 0...90, step: 10) {
