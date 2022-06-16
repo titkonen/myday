@@ -42,6 +42,7 @@
 		0F57D5402844BDFA008BC3DC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		0F57D5442845DF39008BC3DC /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		0F57D5482845E2C2008BC3DC /* SortSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSelectionView.swift; sourceTree = "<group>"; };
+		0F7CA673285AF54900EC98E5 /* MyDayModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MyDayModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		0F9BC98D2841EFFF00313479 /* MyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9BC9902841EFFF00313479 /* MyDayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayApp.swift; sourceTree = "<group>"; };
 		0F9BC9922841EFFF00313479 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -436,9 +437,10 @@
 		0F9BC9A02841F05F00313479 /* MyDayModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				0F7CA673285AF54900EC98E5 /* MyDayModel 2.xcdatamodel */,
 				0F9BC9A12841F05F00313479 /* MyDayModel.xcdatamodel */,
 			);
-			currentVersion = 0F9BC9A12841F05F00313479 /* MyDayModel.xcdatamodel */;
+			currentVersion = 0F7CA673285AF54900EC98E5 /* MyDayModel 2.xcdatamodel */;
 			path = MyDayModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

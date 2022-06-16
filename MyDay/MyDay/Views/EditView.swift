@@ -1,4 +1,6 @@
 import SwiftUI
+import CoreData
+import Foundation
 
 struct EditView: View {
   @Environment(\.managedObjectContext) var managedObjContext
@@ -9,8 +11,9 @@ struct EditView: View {
   @State private var title = ""
   @State private var breadtext = ""
   @State private var mood: Double = 0
+//  @State private var date = Date()
+  @State private var postDay = Date()
   
-  // MARK: Image properties
   @State private var image: UIImage?
   @State private var shouldShowImagePicker = false
   
@@ -22,6 +25,7 @@ struct EditView: View {
             title = day.title!
             breadtext = day.breadtext!
             mood = day.mood
+            postDay = day.postDay ?? Date()
           }
         TextEditor(text: $breadtext)
           .foregroundColor(.primary)
@@ -38,12 +42,22 @@ struct EditView: View {
             Text("Happy")
           }
           
-        }
+        } ///_Vstack
         .padding()
+        
+//        DatePicker("Starts", selection: $meetingDate, displayedComponents: [.date, .hourAndMinute])
+        DatePicker("Change date", selection: $postDay, displayedComponents: [.date, .hourAndMinute])
+        
+        Text(postDay, style: .time)
+          .font(.footnote)
+        
         HStack {
           Spacer()
           Button("Update") {
-            DataController().edit(day: day, title: title, breadtext: breadtext, mood: mood, context: managedObjContext) /// image: image
+//            DataController().edit(day: day, title: title, breadtext: breadtext, mood: mood, context: managedObjContext) /// image: image
+            DataController().edit(day: day, title: title, breadtext: breadtext, mood: mood, postDay: Date(), context: managedObjContext)
+            
+        
             dismiss()
           }
           Spacer()
@@ -70,7 +84,8 @@ struct EditView: View {
         HStack {
           Spacer()
           Button("Save Photo") {
-            DataController().editPhoto(day: day, title: title, breadtext: breadtext, mood: mood, context: managedObjContext, image: image)
+//            DataController().editPhoto(day: day, title: title, breadtext: breadtext, mood: mood, context: managedObjContext, image: image)
+            DataController().editPhoto(day: day, title: title, breadtext: breadtext, mood: mood, postDay: Date(), context: managedObjContext, image: image)
             dismiss()
           }
           Spacer()

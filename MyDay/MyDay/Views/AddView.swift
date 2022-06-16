@@ -55,7 +55,8 @@ struct AddView: View {
           Spacer()
           Button("Save") {
             guard let image = image else { return }
-            DataController().add(title: title, breadtext: breadtext, mood: mood, context: managedObjContext, image: image)
+//            DataController().add(title: title, breadtext: breadtext, mood: mood, context: managedObjContext, image: image)
+            DataController().add(title: title, breadtext: breadtext, mood: mood, postDay: Date(), context: managedObjContext, image: image)
             dismiss()
           }
           Spacer()

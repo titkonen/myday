@@ -22,33 +22,35 @@ class DataController: ObservableObject {
     }
   }
   
-  func add(title: String, breadtext: String, mood: Double, context: NSManagedObjectContext, image: UIImage?) {
+  func add(title: String, breadtext: String, mood: Double, postDay: Date, context: NSManagedObjectContext, image: UIImage?) {
     let day = MyDayEntity(context: context)
     day.id = UUID()
     day.date = Date()
     day.title = title
     day.breadtext = breadtext
     day.mood = mood
+    day.postDay = Date()
     day.image = image?.jpegData(compressionQuality: 0.7)
     
-    
     save(context: context)
   }
   
-  func edit(day: MyDayEntity, title: String, breadtext: String, mood: Double, context: NSManagedObjectContext) {
+  func edit(day: MyDayEntity, title: String, breadtext: String, mood: Double, postDay: Date, context: NSManagedObjectContext) {
     day.date = Date()
     day.title = title
     day.breadtext = breadtext
     day.mood = mood
+    day.postDay = Date()
     
     save(context: context)
   }
   
-  func editPhoto(day: MyDayEntity, title: String, breadtext: String, mood: Double, context: NSManagedObjectContext, image: UIImage?) {
+  func editPhoto(day: MyDayEntity, title: String, breadtext: String, mood: Double, postDay: Date, context: NSManagedObjectContext, image: UIImage?) {
     day.date = Date()
     day.title = title
     day.breadtext = breadtext
     day.mood = mood
+    day.postDay = Date()
     day.image = image?.jpegData(compressionQuality: 0.7)
     
     save(context: context)
